@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Modern Investor's Portfolio Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Energetic & Playful with a vibrant blue accent -->
+    <!-- Application Structure Plan: The infographic follows a narrative flow designed for a novice investor. 1) Hook: A clear title and definition. 2) Why Invest?: Immediately visualizes the core benefits (beating inflation, compounding) using a line chart and large stats. 3) The Building Blocks: Uses styled cards to introduce the core asset classes. 4) Risk vs. Reward: A horizontal bar chart clearly compares asset classes. 5) Find Your Style: Uses a grid of donut charts to visually explain different portfolio allocations (Aggressive, Moderate, Conservative). 6) The Golden Rules: A simple HTML/CSS flowchart explains the rebalancing cycle. This structure transforms the report into an educational journey, prioritizing visual understanding and a clear narrative over the original document's linear format. -->
+    <!-- Visualization & Content Choices: 1. Inflation Impact: Report Info -> $50k pension losing value. Goal -> Change. Viz -> Line Chart (Chart.js/Canvas). Justification -> Visually demonstrates the erosive effect of inflation over time, which is more impactful than text alone. 2. Asset Risk/Return: Report Info -> Historical performance hierarchy. Goal -> Compare/Relationships. Viz -> Horizontal Bar Chart (Chart.js/Canvas). Justification -> Provides an immediate, clear visual ranking of risk vs. potential return for key asset classes. 3. Portfolio Allocations: Report Info -> Example allocations (85/15, 60/40, etc.). Goal -> Compare/Inform. Viz -> Donut Charts (Chart.js/Canvas). Justification -> Instantly communicates the composition of different portfolio types. 4. Rebalancing Process: Report Info -> Description of rebalancing. Goal -> Organize. Viz -> HTML/CSS Flowchart. Justification -> Simplifies a key management principle into an easy-to-follow, cyclical process diagram without using prohibited SVG or Mermaid JS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #E0E1DD; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
+        .donut-chart-container { position: relative; width: 100%; max-width: 300px; margin-left: auto; margin-right: auto; height: 300px; max-height: 300px; }
+        h1, h2, h3 { color: #0D1B2A; }
+        p, li, span { color: #1B263B; }
+        .accent-color { color: #00A6FB; }
+        .card-glow { box-shadow: 0 0 15px rgba(65, 90, 119, 0.1); }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center py-12">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4">The Anatomy of an Investment Portfolio</h1>
+            <p class="text-xl md:text-2xl text-slate-700 max-w-4xl mx-auto">Your guide to building wealth by strategically collecting assets like stocks, bonds, and cash to achieve your financial goals.</p>
+        </header>
+
+        <main>
+            <section class="py-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Why Build a Portfolio?</h2>
+                <p class="text-lg text-center text-slate-600 mb-12 max-w-3xl mx-auto">A portfolio is your primary tool to grow wealth and protect your money's value from the silent erosion of inflation.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white p-6 rounded-2xl card-glow">
+                        <h3 class="text-2xl font-bold mb-4">Combat Inflation's Erosion</h3>
+                        <p class="mb-4">Inflation causes the money you save to buy less over time. A $50,000 pension today could have its purchasing power cut by nearly half in 20 years. Investing is essential to outpace inflation.</p>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="inflationChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl card-glow">
+                        <h3 class="text-2xl font-bold mb-4">Harness the Power of Compounding</h3>
+                         <p class="mb-4">Compounding means earning returns on your returns, creating a snowball effect that dramatically accelerates wealth growth over the long term, far outpacing traditional savings accounts.</p>
+                         <div class="space-y-4 text-center p-8">
+                            <div class="text-6xl font-extrabold accent-color">7-10%</div>
+                            <p class="font-semibold">Typical Average Annual Stock Market Return</p>
+                            <div class="text-2xl font-bold text-gray-400">vs.</div>
+                            <div class="text-5xl font-extrabold text-slate-500">~1-2%</div>
+                            <p class="font-semibold">Typical Savings Account Return</p>
+                         </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">The Building Blocks: Asset Classes</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-2xl card-glow text-center">
+                        <div class="text-4xl mb-4">📈</div>
+                        <h3 class="text-2xl font-bold mb-2">Stocks</h3>
+                        <p>Ownership in a company. High potential for growth, but also higher risk. The engine of long-term wealth creation.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl card-glow text-center">
+                        <div class="text-4xl mb-4">🛡️</div>
+                        <h3 class="text-2xl font-bold mb-2">Bonds</h3>
+                        <p>A loan to a government or company. Provides stable income and balances the volatility of stocks. Lower risk and lower returns.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl card-glow text-center">
+                        <div class="text-4xl mb-4">💵</div>
+                        <h3 class="text-2xl font-bold mb-2">Cash</h3>
+                        <p>Liquid and safe assets. Essential for emergencies and short-term needs, but offers little to no growth and loses value to inflation.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl card-glow text-center">
+                        <div class="text-4xl mb-4">🌍</div>
+                        <h3 class="text-2xl font-bold mb-2">Alternatives</h3>
+                        <p>Assets like real estate or commodities (gold). Can offer diversification and inflation hedging, but are often more complex.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">The Fundamental Trade-Off: Risk vs. Potential Return</h2>
+                <p class="text-lg text-center text-slate-600 mb-12 max-w-3xl mx-auto">Investing involves a direct trade-off. To achieve higher potential returns, you must be willing to accept greater risk of short-term losses. This chart shows the historical hierarchy.</p>
+                 <div class="bg-white p-6 rounded-2xl card-glow">
+                    <div class="chart-container" style="height: 400px;">
+                        <canvas id="riskReturnChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Find Your Fit: Portfolio Types by Risk Profile</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-2xl card-glow flex flex-col">
+                        <h3 class="text-2xl font-bold text-center mb-4">Conservative</h3>
+                        <p class="text-center text-sm mb-4 flex-grow">Prioritizes capital preservation. Suited for short time horizons or retirees.</p>
+                        <div class="donut-chart-container">
+                             <canvas id="conservativeChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl card-glow flex flex-col border-4 border-[#00A6FB]">
+                        <h3 class="text-2xl font-bold text-center mb-4">Moderate</h3>
+                        <p class="text-center text-sm mb-4 flex-grow">A balanced approach seeking a blend of growth and stability. The most common strategy.</p>
+                        <div class="donut-chart-container">
+                             <canvas id="moderateChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl card-glow flex flex-col">
+                        <h3 class="text-2xl font-bold text-center mb-4">Aggressive</h3>
+                        <p class="text-center text-sm mb-4 flex-grow">Aims for maximum long-term growth. Suited for young investors with long time horizons.</p>
+                        <div class="donut-chart-container">
+                             <canvas id="aggressiveChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-16">
+                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">The Golden Rules of Portfolio Management</h2>
+                 <p class="text-lg text-center text-slate-600 mb-12 max-w-3xl mx-auto">A portfolio isn't a "set it and forget it" tool. It requires discipline and ongoing maintenance to stay on track with your goals.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="bg-white p-8 rounded-2xl card-glow">
+                        <h3 class="text-2xl font-bold mb-4">Diversification: The Only Free Lunch</h3>
+                        <p>The principle of "don't put all your eggs in one basket." By spreading investments across different asset classes (and within them), you reduce risk. When one asset zigs, another might zag, smoothing your returns over time.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl card-glow">
+                        <h3 class="text-2xl font-bold mb-4">Rebalancing: The Key to Discipline</h3>
+                        <p>Over time, your portfolio will drift from its target allocation. Rebalancing is the disciplined process of selling high-performing assets and buying underperforming ones to return to your original mix.</p>
+                        <div class="mt-6 flex items-center justify-center space-x-2 md:space-x-4">
+                            <div class="text-center p-3 border-2 border-slate-300 rounded-lg">
+                                <p class="font-bold">1. Set Target</p>
+                                <p class="text-xs">60% Stocks<br>40% Bonds</p>
+                            </div>
+                             <div class="text-2xl font-bold text-slate-400">→</div>
+                             <div class="text-center p-3 border-2 border-slate-300 rounded-lg">
+                                <p class="font-bold">2. Market Drifts</p>
+                                <p class="text-xs">70% Stocks<br>30% Bonds</p>
+                            </div>
+                             <div class="text-2xl font-bold text-slate-400">→</div>
+                             <div class="text-center p-3 border-2 border-[#00A6FB] rounded-lg">
+                                <p class="font-bold">3. Rebalance</p>
+                                <p class="text-xs">Sell Stocks<br>Buy Bonds</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const sharedTooltipTitleCallback = function(tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                  return label.join(' ');
+                } else {
+                  return label;
+                }
+            };
+
+            const sharedChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: sharedTooltipTitleCallback
+                        }
+                    }
+                }
+            };
+
+            const wrapLabel = (label) => {
+                if (label.length > 16) {
+                    const words = label.split(' ');
+                    const lines = [];
+                    let currentLine = '';
+                    for (const word of words) {
+                        if ((currentLine + word).length > 16) {
+                            lines.push(currentLine.trim());
+                            currentLine = '';
+                        }
+                        currentLine += word + ' ';
+                    }
+                    lines.push(currentLine.trim());
+                    return lines;
+                }
+                return label;
+            };
+            
+            const createInflationChart = () => {
+                const ctx = document.getElementById('inflationChart').getContext('2d');
+                const years = Array.from({ length: 21 }, (_, i) => `Year ${i}`);
+                const purchasingPower = Array.from({ length: 21 }, (_, i) => 50000 * Math.pow(1 - 0.03, i));
+                
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: years,
+                        datasets: [{
+                            label: 'Purchasing Power',
+                            data: purchasingPower,
+                            borderColor: '#415A77',
+                            backgroundColor: 'rgba(65, 90, 119, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        ...sharedChartOptions,
+                        scales: {
+                            y: {
+                                ticks: {
+                                    callback: function(value) {
+                                        return '$' + (value / 1000) + 'k';
+                                    }
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    maxTicksLimit: 5
+                                }
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    title: sharedTooltipTitleCallback,
+                                    label: (context) => `Value: $${Math.round(context.raw).toLocaleString()}`
+                                }
+                            },
+                            legend: { display: false }
+                        }
+                    }
+                });
+            };
+
+            const createRiskReturnChart = () => {
+                const ctx = document.getElementById('riskReturnChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Cash', ['Govt.', 'Bonds'], ['Corp.', 'Bonds'], 'Real Estate', 'Stocks'],
+                        datasets: [{
+                            label: 'Potential Return',
+                            data: [1, 3, 4, 6, 9],
+                            backgroundColor: [
+                                '#778DA9',
+                                '#415A77',
+                                '#1B263B',
+                                '#0D1B2A',
+                                '#00A6FB'
+                            ],
+                            borderColor: '#ffffff',
+                            borderWidth: 2,
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        ...sharedChartOptions,
+                        scales: {
+                            x: {
+                                title: { display: true, text: 'Relative Potential Return →' },
+                                grid: { display: false }
+                            },
+                            y: { grid: { display: false } }
+                        }
+                    }
+                });
+            };
+
+            const createDonutChart = (id, data, labels) => {
+                const ctx = document.getElementById(id).getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: data,
+                            backgroundColor: ['#00A6FB', '#415A77', '#778DA9'],
+                            borderColor: '#ffffff',
+                            borderWidth: 4,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '65%',
+                        plugins: {
+                           legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 15,
+                                    boxWidth: 12,
+                                    font: { size: 12 }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: sharedTooltipTitleCallback,
+                                    label: (context) => `${context.label}: ${context.raw}%`
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+            
+            createInflationChart();
+            createRiskReturnChart();
+            createDonutChart('conservativeChart', [30, 70], ['Stocks', 'Bonds & Cash']);
+            createDonutChart('moderateChart', [60, 40], ['Stocks', 'Bonds & Cash']);
+            createDonutChart('aggressiveChart', [85, 15], ['Stocks', 'Bonds & Cash']);
+        });
+    </script>
+</body>
+</html>
